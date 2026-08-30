@@ -1,0 +1,207 @@
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: calc(76px + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.25s,
+    border-color 0.25s,
+    backdrop-filter 0.25s;
+}
+.site-header.is-scrolled {
+  background: rgba(3, 5, 8, 0.9);
+  border-color: var(--line);
+  backdrop-filter: blur(14px);
+}
+.header-inner {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 56px;
+}
+.brand-mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(0, 124, 255, 0.32));
+}
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.site-nav > a:not(.button) {
+  position: relative;
+  color: #c5cad2;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.site-nav > a:not(.button):after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -7px;
+  height: 2px;
+  background: var(--blue);
+  transition: right 0.26s var(--ease);
+}
+.site-nav > a:not(.button):hover {
+  color: var(--white);
+}
+.site-nav > a:not(.button):hover:after {
+  right: 0;
+}
+.menu-toggle {
+  display: none;
+}
+.gallery-lightbox {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  padding: clamp(60px, 8vw, 110px) clamp(16px, 8vw, 120px);
+  border: 0;
+  background: rgba(3, 5, 8, 0.97);
+  color: var(--white);
+  grid-template-columns: 56px 1fr 56px;
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 20px;
+}
+.gallery-lightbox[open] {
+  display: grid;
+}
+.gallery-lightbox::backdrop {
+  background: rgba(3, 5, 8, 0.9);
+}
+.gallery-lightbox img {
+  grid-column: 2;
+  grid-row: 1;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  justify-self: center;
+  object-fit: contain;
+}
+.gallery-lightbox-nav,
+.gallery-lightbox-close {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+.gallery-lightbox-nav:first-child {
+  grid-column: 1;
+}
+.gallery-lightbox-nav:last-child {
+  grid-column: 3;
+}
+.gallery-lightbox-close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-size: 1.8rem;
+}
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  border: 1px solid rgba(57, 162, 255, 0.6);
+  background: rgba(5, 61, 143, 0.92);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition:
+    opacity 0.35s,
+    transform 0.35s,
+    visibility 0s linear 0.35s;
+}
+.whatsapp-float.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition-delay: 0s;
+}
+.whatsapp-float svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  fill: currentColor;
+}
+.site-footer {
+  padding: 40px 0 24px;
+  border-top: 1px solid var(--line);
+  background: #020305;
+}
+.footer-main {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.footer-brand {
+  flex: none;
+}
+.footer-main > p {
+  margin: 0;
+  color: var(--muted);
+  font: 500 0.7rem var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.footer-main > p i {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 10px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+.footer-contacts {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+  color: var(--silver);
+  font-size: 0.9rem;
+}
+.footer-contacts a,
+.footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font: 500 0.7rem var(--font-mono);
+}

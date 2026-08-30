@@ -1,19 +1,26 @@
-// links.js
+import { initWhatsApp } from "./modules/whatsapp.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const mapToggle = document.getElementById('map-toggle');
-  const mapContainer = document.getElementById('map-container');
-
-  if (mapToggle && mapContainer) {
-    mapToggle.addEventListener('click', () => {
-      mapContainer.classList.toggle('is-open');
-      
-      // Optional: scroll into view if opened
-      if (mapContainer.classList.contains('is-open')) {
-        setTimeout(() => {
-          mapContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 150);
-      }
-    });
-  }
-});
+initWhatsApp();
+const toggle = document.querySelector("#map-toggle");
+const container = document.querySelector("#map-container");
+const iframe = container?.querySelector("iframe");
+if (toggle && container && iframe) {
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    container.hidden = open;
+    iframe.tabIndex = open ? -1 : 0;
+    if (!open && !iframe.getAttribute("src"))
+      iframe.src = iframe.dataset.mapSrc;
+    toggle
+      .querySelector("span")
+      ?.replaceChildren(document.createTextNode(open ? "+" : "×"));
+    if (!open)
+      container.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+        block: "nearest",
+      });
+  });
+}
