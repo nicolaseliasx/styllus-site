@@ -1,16 +1,16 @@
 export function initFloatingCta(root = document) {
   const button = root.querySelector(".whatsapp-float");
   const hero = root.querySelector("[data-hero-cta]");
-  const guards = root.querySelectorAll("[data-float-guard]");
+  const guard = root.querySelector("[data-float-guard]");
   if (!button || !hero) return;
   if (!("IntersectionObserver" in window)) {
     button.classList.add("is-visible");
     return;
   }
   let heroVisible = true;
-  const visibleGuards = new Set();
+  let mapVisible = false;
   const update = () => {
-    const visible = !heroVisible && visibleGuards.size === 0;
+    const visible = !heroVisible && !mapVisible;
     button.classList.toggle("is-visible", visible);
     button.toggleAttribute("inert", !visible);
   };
@@ -22,15 +22,12 @@ export function initFloatingCta(root = document) {
     },
     { threshold: 0.15 },
   ).observe(hero);
-  const guardObserver = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) visibleGuards.add(entry.target);
-        else visibleGuards.delete(entry.target);
-      }
-      update();
-    },
-    { threshold: 0.05 },
-  );
-  guards.forEach((guard) => guardObserver.observe(guard));
+  if (guard)
+    new IntersectionObserver(
+      ([entry]) => {
+        mapVisible = entry.isIntersecting;
+        update();
+      },
+      { threshold: 0.2 },
+    ).observe(guard);
 }

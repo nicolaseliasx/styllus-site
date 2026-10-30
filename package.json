@@ -8,8 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test test/campaign.test.js",
-    "test:responsive": "playwright test",
-    "test:production": "playwright test --config playwright.production.config.js"
+    "test:responsive": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1",

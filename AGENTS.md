@@ -14,21 +14,21 @@ academia e converter para WhatsApp. Sem backend, sem formulários, sem cookies.
 ## Estética (adaptado do Claude Cookbook — "Prompting for Frontend Aesthetics")
 
 Evite a estética genérica de IA. Este projeto busca um visual autoral, com
-identidade de academia séria: navy, fotografia real e um único azul de ação.
+identidade de academia séria — escuro, metálico, azul elétrico.
 
 - **Tipografia**: nunca use Inter, Roboto, Open Sans, Lato ou fontes de sistema
   como identidade. Display: **Anton** (impacto condensado). Corpo: **Barlow**.
-  Títulos de seção em Barlow 700, escrita normal. Nada de fonte mono ou
-  rótulos técnicos. Contraste de escala concentrado no H1 do hero.
-- **Cor e tema**: paleta de quatro papéis (ver BRAND.md): navy no topo e no
-  fechamento, `--paper` contínuo no conteúdo, `--ink` no texto e `--blue-action`
-  só em ações. Use sempre os tokens de `shared.css`; nada de azuis paralelos.
+  Acento técnico (labels, números, coordenadas): **JetBrains Mono**. Use
+  contraste extremo: pesos 300 vs 700+, saltos de escala 3x, não 1.5x.
+- **Cor e tema**: comprometa-se com o tema escuro navy + azul elétrico derivado
+  do logo (ver BRAND.md). Cor dominante com acentos pontuais vence paletas
+  tímidas e uniformes. CSS variables para consistência.
 - **Motion**: um page-load bem orquestrado com staggered reveals gera mais
   impacto que micro-interações espalhadas. Priorize soluções CSS-only; GSAP
   apenas para entradas e scroll reveals. Respeite sempre
   `prefers-reduced-motion` (há testes cobrindo isso).
-- **Backgrounds**: a profundidade vem da fotografia real; superfícies são lisas
-  e sem glows, grids decorativos ou gradientes radiais.
+- **Backgrounds**: atmosfera e profundidade, nunca cor chapada. Camadas de
+  gradients radiais, grids geométricos sutis, glows contextuais.
 - **Evite**: gradientes roxos, layouts "SaaS dashboard", cards genéricos com
   border-radius grande e sombras suaves, fontes batidas, emojis.
 

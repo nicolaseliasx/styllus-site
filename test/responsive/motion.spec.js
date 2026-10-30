@@ -6,7 +6,7 @@ test("movimento reduzido deixa conteúdo visível sem autoplay", async ({
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  await expect(page.locator(".site-header .brand img")).toBeVisible();
+  await expect(page.locator(".hero-lockup")).toBeVisible();
   await expect(page.locator("h1")).toBeVisible();
   await expect(page.locator("[data-hero-cta]")).toBeVisible();
   await expect(page.locator(".gallery-track img.is-active")).toHaveCount(1);
