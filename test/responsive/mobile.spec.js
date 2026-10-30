@@ -21,7 +21,8 @@ for (const viewport of [
     ).toBe(true);
     await expect(page.locator("[data-hero-cta]")).toBeVisible();
     const lockup = await page.locator(".site-header .brand img").boundingBox();
-    expect(lockup.width).toBeGreaterThanOrEqual(72);
+    expect(lockup.width).toBeGreaterThanOrEqual(44);
+    expect(lockup.width).toBeLessThanOrEqual(52);
     const cta = await page.locator("[data-hero-cta]").boundingBox();
     expect(cta.height).toBeGreaterThanOrEqual(44);
     expect(cta.y + cta.height).toBeLessThanOrEqual(viewport.height);

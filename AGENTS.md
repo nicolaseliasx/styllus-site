@@ -20,9 +20,9 @@ identidade de academia séria: navy, fotografia real e um único azul de ação.
   como identidade. Display: **Anton** (impacto condensado). Corpo: **Barlow**.
   Títulos de seção em Barlow 700, escrita normal. Nada de fonte mono ou
   rótulos técnicos. Contraste de escala concentrado no H1 do hero.
-- **Cor e tema**: paleta de quatro papéis (ver BRAND.md): navy no topo e no
-  fechamento, `--paper` contínuo no conteúdo, `--ink` no texto e `--blue-action`
-  só em ações. Use sempre os tokens de `shared.css`; nada de azuis paralelos.
+- **Cor e tema**: tema escuro contínuo (ver BRAND.md): navy em toda a página,
+  cards `--soft`, texto `--ink` claro e `--blue-action` só em ações. Não use
+  seções brancas. Use sempre os tokens de `shared.css`.
 - **Motion**: um page-load bem orquestrado com staggered reveals gera mais
   impacto que micro-interações espalhadas. Priorize soluções CSS-only; GSAP
   apenas para entradas e scroll reveals. Respeite sempre
@@ -40,7 +40,7 @@ identidade de academia séria: navy, fotografia real e um único azul de ação.
   `https://api.whatsapp.com/send?phone=5548991885129&text=...` (injetado em
   `[data-whatsapp]` pelo `src/main.js`), e-mail `contato@styllusfitness.com.br`,
   endereço R. Princesa Isabel, 600 — Pte. do Imaruim, Palhoça — SC, 88130-635,
-  mapa Google embed na seção Estrutura.
+  mapa Google embed na seção Localização (`#localizacao`), que vem logo após o hero.
 - Imagens: fotos partem de HEIC 4032×2268 em `assets/overview/`; sempre gere
   variantes WebP (800w/1600w/2560w) com `magick` e sirva com `srcset`.
 - Perfeição em mobile (360px+) e desktop (1920px+): sem overflow horizontal,

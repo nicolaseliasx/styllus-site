@@ -151,14 +151,17 @@ test("mantém contraste AA, safe areas e alvos mínimos nos componentes", async 
     read("src/links.css"),
   ]);
   assert.ok(contrast("#f5f7fa", "#0866cc") >= 4.5);
-  assert.ok(contrast("#15202b", "#ffffff") >= 4.5);
-  assert.ok(contrast("#56616a", "#ffffff") >= 4.5);
-  assert.ok(contrast("#0866cc", "#ffffff") >= 4.5);
-  assert.ok(contrast("#bdc5ce", "#08111b") >= 4.5);
+  // Conteúdo em tema escuro contínuo: texto e links legíveis no fundo e nos cards.
+  for (const surface of ["#08111b", "#121e2b"]) {
+    assert.ok(contrast("#f5f7fa", surface) >= 4.5);
+    assert.ok(contrast("#a9b4c0", surface) >= 4.5);
+    assert.ok(contrast("#3c96db", surface) >= 4.5);
+  }
   assert.match(shared, /--blue-action:\s*#0866cc/);
-  assert.match(shared, /--paper:\s*#ffffff/);
-  assert.match(shared, /--ink:\s*#15202b/);
-  assert.match(shared, /--ink-muted:\s*#56616a/);
+  assert.match(shared, /--paper:\s*#08111b/);
+  assert.match(shared, /--soft:\s*#121e2b/);
+  assert.match(shared, /--ink:\s*#f5f7fa/);
+  assert.match(shared, /--ink-muted:\s*#a9b4c0/);
   assert.match(shared, /\.button-small\s*{[^}]*min-height:\s*44px/s);
   assert.match(components, /safe-area-inset-top/);
   assert.match(responsive, /visibility:\s*hidden/);
@@ -192,4 +195,29 @@ test("fotos usam variantes responsivas e há uma única galeria completa", async
   assert.match(markup, /fetchpriority="high"/);
   assert.match(markup, /data-gallery-previous/);
   assert.match(markup, /data-gallery-next/);
+});
+
+test("declara a academia como negócio local com endereço, contato e horários", async () => {
+  const markup = await read("index.html");
+  const match = markup.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(match, "JSON-LD ausente");
+  const data = JSON.parse(match[1]);
+  assert.equal(data["@type"], "ExerciseGym");
+  assert.equal(data.name, "Styllus Fitness Center");
+  assert.equal(data.telephone, "+55 48 99188-5129");
+  assert.deepEqual(data.address, {
+    "@type": "PostalAddress",
+    streetAddress: "R. Princesa Isabel, 600 — Pte. do Imaruim",
+    addressLocality: "Palhoça",
+    addressRegion: "SC",
+    postalCode: "88130-635",
+    addressCountry: "BR",
+  });
+  assert.deepEqual(
+    data.openingHoursSpecification.map(({ dayOfWeek, opens, closes }) => [dayOfWeek, opens, closes]),
+    [
+      [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "06:00", "23:00"],
+      [["Saturday"], "09:00", "12:00"],
+    ],
+  );
 });

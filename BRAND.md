@@ -29,8 +29,8 @@ Quatro papéis, sem variações paralelas de azul:
 | Token | Hex | Papel |
 | --- | --- | --- |
 | `--navy` | `#08111b` | Cabeçalho, abertura, convite final, rodapé e `/links` |
-| `--paper` | `#ffffff` | Superfície contínua do conteúdo (`--soft` `#f2f4f6` em cards) |
-| `--ink` | `#15202b` | Texto sobre `--paper` (`--ink-muted` `#56616a` no secundário) |
+| `--paper` | `#08111b` | Superfície contínua do conteúdo, igual ao navy (`--soft` `#121e2b` em cards, borda `--line-light`) |
+| `--ink` | `#f5f7fa` | Texto sobre `--paper` (`--ink-muted` `#a9b4c0` no secundário) |
 | `--blue-action` | `#0866cc` | Ações principais e links (hover `#0757ad`) |
 
 Apoio: `--white` `#f5f7fa` e `--silver` `#bdc5ce` para texto sobre navy;
@@ -38,7 +38,7 @@ Apoio: `--white` `#f5f7fa` e `--silver` `#bdc5ce` para texto sobre navy;
 foco, marcadores e na palavra de destaque do H1. Proibido: azul pastel em títulos, faixas azul-claras,
 glows e gradientes decorativos.
 
-Regra: navy no topo e no fechamento, papel no meio, azul só onde há ação. A
+Regra: tema escuro contínuo, sem seções brancas (testadas e rejeitadas duas vezes em 30/10/2026); a foto do hero dissolve no navy, cards levemente mais claros e azul só onde há ação. Links sobre o escuro usam `--blue-light`. A
 marca completa aparece uma vez no cabeçalho. `/links` usa os mesmos botões da home.
 
 ## Tipografia
@@ -71,4 +71,4 @@ Valores fixos do rodapé: **Força · Saúde · Disciplina · Resultados**.
 - [ ] `prefers-reduced-motion`: conteúdo 100% acessível sem animação
 - [ ] LCP do hero com `fetchpriority="high"` + `srcset` nas fotos
 - [ ] Copy em pt-BR, tom do brand book, dados de contato corretos
-- [ ] Hero navy com foto real, conteúdo em `--paper` e azul apenas nas ações
+- [ ] Página inteira escura, foto real no hero e azul apenas nas ações

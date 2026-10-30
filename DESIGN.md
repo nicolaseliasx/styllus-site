@@ -3,9 +3,8 @@
 ## Direção
 
 A home apresenta a academia com uma abertura fotográfica e conduz à conversa no
-WhatsApp. A paleta tem quatro papéis (ver BRAND.md): navy no cabeçalho, hero,
-convite final e rodapé; papel neutro contínuo no conteúdo; grafite no texto; um
-único azul nas ações. Revisada em 30/10/2026 após a versão anterior misturar
+WhatsApp. A página é inteira escura (ver BRAND.md): navy contínuo do hero ao rodapé, cards
+`--soft` com borda sutil, texto claro e um único azul nas ações. Revisada em 30/10/2026 após a versão anterior misturar
 preto, navy, azul pastel e brilhos.
 
 Os prints da Smart Fit fornecidos pelo usuário orientam a integração entre
@@ -15,9 +14,9 @@ Todos os assets publicados são da própria Styllus.
 
 ## Cores e tipografia
 
-- Tokens em `src/styles/shared.css`: `--navy` #08111b, `--paper` #ffffff,
-  `--soft` #f2f4f6, raios `--radius` 20px e `--radius-lg` 28px,
-  `--ink` #15202b / `--ink-muted` #56616a, `--blue-action` #0866cc (hover #0757ad,
+- Tokens em `src/styles/shared.css`: `--navy` #08111b, `--paper` #08111b,
+  `--soft` #121e2b, raios `--radius` 20px e `--radius-lg` 28px,
+  `--ink` #f5f7fa / `--ink-muted` #a9b4c0, `--blue-action` #0866cc (hover #0757ad,
   texto `--white`). Botões em pílula compartilham `.button` (Barlow 700, sem
   caixa-alta) na home e em `/links`.
 - Anton identifica o título principal. Barlow em 700 e escrita normal compõe os
@@ -29,19 +28,25 @@ Todos os assets publicados são da própria Styllus.
 Referência: home mobile da Smart Fit. A foto `overview-03` cobre todo o hero
 (`100svh`, entre 600 e 1000px) em todas as larguras, inclusive atrás do
 cabeçalho, com degradês navy no topo, na base e à esquerda para legibilidade.
-O texto fica no canto inferior esquerdo: eyebrow “Desde 2005 na Ponte do
-Imaruim”, H1 Anton “Sua academia em Palhoça.” com “Palhoça.” em `--blue-light`,
+O texto fica no canto inferior esquerdo: eyebrow “Academia desde 2005”, H1 Anton “Sua academia em Palhoça.” com “Palhoça.” em `--blue-light`,
 apoio e um único CTA “Agendar aula experimental”.
 
-O cabeçalho é transparente sobre a foto e fica navy sólido ao rolar ou com o menu
-aberto. O logo completo aparece só ali. O menu móvel é um círculo branco de 48px.
+O cabeçalho (80px; 68px no celular) é transparente sobre a foto e, ao rolar, fica
+navy translúcido (0.78) com desfoque; com o menu aberto, navy sólido. O logo
+completo aparece só ali, compacto: 60px (50px no celular). O menu móvel é um
+círculo branco de 48px.
 
 ## Conteúdo e componentes
 
-A sequência é abertura, estrutura (galeria + legenda + diferenciais),
-horários/localização e convite final, que reúne aula experimental e consulta
-de planos. O convite final é um card fotográfico (`overview-05`, raio 28px) com
-texto branco sobre degradê navy, no estilo dos cards da referência.
+A sequência é abertura, localização e horários, estrutura (galeria + legenda +
+diferenciais) e convite final. A localização é prioridade: o hero traz o endereço
+com link de rota (`data-hero-location`, Google Maps directions) na primeira tela,
+e a seção “Onde e quando treinar.” (`#localizacao`, com `#horarios`) reúne
+endereço, botão “Como chegar”, horários e mapa. O menu segue essa ordem
+(Localização, Horários, Estrutura) mais o botão de WhatsApp; a consulta de planos
+fica no convite final. O rodapé repete o endereço, e o `<head>` declara um
+JSON-LD `ExerciseGym` com endereço, telefone e horários. O convite final é um
+card fotográfico (`overview-05`, raio 28px) com texto branco sobre degradê navy.
 
 A galeria é um card fotográfico 16:9 (4:5 no celular) com raio de 28px (20px
 no celular). Legenda e contador ficam sobre a foto, à esquerda; as setas são
