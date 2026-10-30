@@ -4,10 +4,8 @@ export const siteConfig = {
   messages: {
     trial:
       "Olá! Gostaria de agendar uma aula experimental na Styllus Fitness Center.",
-    annual:
-      "Olá! Tenho interesse no plano anual de 12x de R$ 89,90 da Styllus.",
-    monthly:
-      "Olá! Tenho interesse no plano mensal de R$ 109,90 sem fidelidade da Styllus.",
+    plans:
+      "Olá! Gostaria de conhecer os planos e as condições atuais da Styllus Fitness Center.",
     general:
       "Olá! Gostaria de conhecer melhor a Styllus Fitness Center, seus planos, horários e estrutura.",
   },

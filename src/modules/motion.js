@@ -9,7 +9,7 @@ export function initMotion(root = document) {
     gsap.from(hero, { opacity: 0, y: 20, duration: 1, ease: "power3.out" });
   root
     .querySelectorAll(
-      ".section-heading,.plan,.difference-list article,.location-grid",
+      ".section-heading,.difference-list article,.location-grid",
     )
     .forEach((element) =>
       gsap.from(element, {

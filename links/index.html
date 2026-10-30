@@ -11,8 +11,9 @@
       type="image/webp"
       href="/assets/styllus-mark-header.webp"
     />
-    <meta name="theme-color" content="#05070a" />
+    <meta name="theme-color" content="#08111b" />
     <meta name="robots" content="noindex" />
+    <meta name="description" content="Fale com a Styllus no WhatsApp, agende sua aula experimental e veja como chegar à academia em Palhoça." />
     <title>Links | Styllus Fitness Center</title>
     <link rel="stylesheet" href="/src/links.css" />
   </head>
@@ -27,7 +28,7 @@
           alt="Styllus Fitness Center"
         />
         <p class="links-kicker">Desde 2005 em Palhoça</p>
-        <h1>Estrutura para treinar.<br /><em>Suporte para evoluir.</em></h1>
+        <h1>Vamos treinar?</h1>
       </header>
       <p class="links-hours">
         <span>Seg–sex</span> 06h–23h <i></i> <span>Sábado</span> 09h–12h
@@ -36,19 +37,27 @@
         <a
           data-whatsapp
           data-whatsapp-message="trial"
+          class="button button-primary links-button"
           href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20na%20Styllus%20Fitness%20Center."
-          class="links-button links-button-primary"
-          >Agendar aula experimental <span aria-hidden="true">↗</span></a
-        ><a href="../#planos" class="links-button links-button-ghost"
-          >Ver planos e valores <span aria-hidden="true">↗</span></a
+          target="_blank"
+          rel="noopener noreferrer"
+        >Agendar aula experimental <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a
+        ><a
+          data-whatsapp
+          data-whatsapp-message="plans"
+          class="button button-ghost links-button"
+          href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20os%20planos%20e%20as%20condi%C3%A7%C3%B5es%20atuais%20da%20Styllus%20Fitness%20Center."
+          target="_blank"
+          rel="noopener noreferrer"
+        >Consultar planos no WhatsApp <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a
         ><button
           type="button"
-          class="links-button links-button-ghost"
+          class="button button-ghost links-button"
           id="map-toggle"
           aria-expanded="false"
           aria-controls="map-container"
         >
-          Como chegar <span aria-hidden="true">+</span>
+          Como chegar <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14" /></svg>
         </button>
         <div class="links-map-container" id="map-container" hidden>
           <iframe
@@ -60,6 +69,7 @@
           ></iframe>
         </div>
       </nav>
+      <a class="text-link links-site" href="../">Conhecer o site <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a>
     </main>
     <script type="module" src="/src/links.js"></script>
   </body>

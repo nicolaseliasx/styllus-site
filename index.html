@@ -11,10 +11,10 @@
       type="image/webp"
       href="/assets/styllus-mark-header.webp"
     />
-    <meta name="theme-color" content="#05070a" />
+    <meta name="theme-color" content="#08111b" />
     <meta
       name="description"
-      content="Desde 2005 em Palhoça: estrutura, suporte e planos para treinar na Styllus Fitness Center."
+      content="Desde 2005 na Ponte do Imaruim, Palhoça. Conheça a estrutura da Styllus e agende sua aula experimental pelo WhatsApp."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -24,31 +24,31 @@
     />
     <meta
       property="og:description"
-      content="Estrutura para treinar. Suporte para evoluir. Conheça os planos da Styllus."
+      content="Seu treino com estrutura e suporte em Palhoça. Conheça a academia e converse com a equipe pelo WhatsApp."
     />
     <title>Styllus Fitness Center | Desde 2005 em Palhoça</title>
     <link
       rel="preload"
       as="image"
-      href="/assets/overview/web/overview-01.webp"
-      imagesrcset="/assets/overview/web/overview-01-800.webp 800w, /assets/overview/web/overview-01.webp 1600w, /assets/overview/web/overview-01-2560.webp 2560w"
-      imagesizes="(max-width: 760px) calc(100vw - 32px), 54vw"
+      href="/assets/overview/web/overview-03.webp"
+      imagesrcset="/assets/overview/web/overview-03-800.webp 800w, /assets/overview/web/overview-03.webp 1600w, /assets/overview/web/overview-03-2560.webp 2560w"
+      imagesizes="100vw"
     />
   </head>
-  <body>
+  <body class="home-page">
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a
-          class="brand"
+          class="brand brand-home"
           href="#inicio"
           aria-label="Styllus Fitness Center — início"
           ><img
             class="brand-mark"
-            src="/assets/styllus-mark-header.webp"
-            width="180"
-            height="180"
-            alt="Emblema da Styllus Fitness Center" /></a
+            src="/assets/styllus-lockup.webp"
+            width="960"
+            height="960"
+            alt="Styllus Fitness Center" /></a
         ><button
           class="menu-toggle"
           type="button"
@@ -65,44 +65,45 @@
           aria-label="Navegação principal"
           data-nav
         >
-          <a href="#planos">Planos</a><a href="#estrutura">Estrutura</a
+          <a
+            data-whatsapp
+            data-whatsapp-message="plans"
+            href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20os%20planos%20e%20as%20condi%C3%A7%C3%B5es%20atuais%20da%20Styllus%20Fitness%20Center."
+            target="_blank"
+            rel="noopener noreferrer"
+          >Consultar planos</a><a href="#estrutura">Estrutura</a
           ><a href="#horarios">Horários</a><a href="#localizacao">Localização</a
           ><a
-            class="button button-small"
+            class="button button-primary button-small"
             data-whatsapp
             data-whatsapp-message="general"
             href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20melhor%20a%20Styllus%20Fitness%20Center%2C%20seus%20planos%2C%20hor%C3%A1rios%20e%20estrutura."
-            >Falar no WhatsApp</a
+            target="_blank"
+            rel="noopener noreferrer"
+          >Falar no WhatsApp</a
           >
         </nav>
       </div>
     </header>
     <main id="conteudo">
       <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="visual-grid" aria-hidden="true"></div>
+        <div class="hero-photo">
+          <img
+            src="/assets/overview/web/overview-03.webp"
+            srcset="/assets/overview/web/overview-03-800.webp 800w, /assets/overview/web/overview-03.webp 1600w, /assets/overview/web/overview-03-2560.webp 2560w"
+            sizes="100vw"
+            width="4032"
+            height="2268"
+            alt="Halteres e bancos na área de musculação da Styllus"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
         <div class="container hero-content">
           <div class="hero-copy">
-            <p class="eyebrow">Desde 2005</p>
-            <img
-              class="hero-lockup"
-              src="/assets/styllus-lockup.webp"
-              width="960"
-              height="960"
-              alt="Styllus Fitness Center — força, saúde, disciplina e resultados"
-            />
-            <h1 id="hero-title">
-              ESTRUTURA PARA<br /><em>TREINAR.</em><br />SUPORTE PARA<br /><em
-                >EVOLUIR.</em
-              >
-            </h1>
-            <p class="hero-lead">
-              Treine com equipamentos Santana Fitness, ambiente climatizado e
-              profissionais presentes para ajudar.
-            </p>
-            <div class="hero-offer">
-              <span>Plano anual</span><strong>12x de R$ 89,90</strong
-              ><small>compromisso de 12 meses</small>
-            </div>
+            <p class="hero-eyebrow">Desde 2005 na Ponte do Imaruim</p>
+            <h1 id="hero-title">Sua academia<br />em <em>Palhoça.</em></h1>
+            <p class="hero-lead">Estrutura e profissionais presentes para o seu treino.</p>
             <div class="hero-actions">
               <a
                 class="button button-primary"
@@ -110,80 +111,11 @@
                 data-whatsapp-message="trial"
                 data-hero-cta
                 href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20na%20Styllus%20Fitness%20Center."
-                >Agendar aula experimental <span aria-hidden="true">↗</span></a
-              ><a class="button button-ghost" href="#planos">Ver planos</a>
-            </div>
-          </div>
-          <div class="hero-media">
-            <div class="hero-photo">
-              <img
-                src="/assets/overview/web/overview-01.webp"
-                srcset="
-                  /assets/overview/web/overview-01-800.webp   800w,
-                  /assets/overview/web/overview-01.webp      1600w,
-                  /assets/overview/web/overview-01-2560.webp 2560w
-                "
-                sizes="(max-width: 760px) calc(100vw - 32px), 54vw"
-                alt="Vista da estrutura da Styllus Fitness Center"
-                fetchpriority="high"
-                decoding="async"
-              />
-            </div>
-            <p class="hero-caption">
-              <span></span> Estrutura Styllus / Palhoça — SC
-            </p>
-          </div>
-        </div>
-      </section>
-      <section class="proof-strip" aria-label="Informações rápidas">
-        <div class="container proof-grid">
-          <span><b>Desde 2005</b><small>em Palhoça</small></span
-          ><span><b>Seg–sex 06h–23h</b><small>horário amplo</small></span
-          ><span
-            ><b>Sábado 09h–12h</b><small>treino no fim de semana</small></span
-          >
-        </div>
-      </section>
-      <section class="plans section" id="planos" aria-labelledby="plans-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Escolha seu ritmo</p>
-            <h2 id="plans-title">UM PLANO QUE<br /><em>CABE NA ROTINA.</em></h2>
-            <p>
-              Converse com a equipe e descubra qual opção faz sentido para você.
-            </p>
-          </div>
-          <div class="plans-grid">
-            <article class="plan plan-featured">
-              <p class="plan-label">Melhor compromisso</p>
-              <h3>Plano anual</h3>
-              <p class="plan-price">
-                <strong>12x de R$ 89,90</strong><span>por mês</span>
-              </p>
-              <p>Compromisso de 12 meses para manter constância no treino.</p>
-              <a
-                class="button button-primary"
-                data-whatsapp
-                data-whatsapp-message="annual"
-                href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20anual%20de%2012x%20de%20R%24%2089%2C90%20da%20Styllus."
-                >Quero o plano anual <span aria-hidden="true">↗</span></a
+                target="_blank"
+                rel="noopener noreferrer"
+              >Agendar aula experimental <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a
               >
-            </article>
-            <article class="plan">
-              <p class="plan-label">Liberdade mensal</p>
-              <h3>Plano mensal</h3>
-              <p class="plan-price">
-                <strong>R$ 109,90</strong><span>por mês</span>
-              </p>
-              <p>Sem fidelidade para você começar no seu tempo.</p>
-              <a
-                class="button button-ghost"
-                data-whatsapp
-                data-whatsapp-message="monthly"
-                href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Tenho%20interesse%20no%20plano%20mensal%20de%20R%24%20109%2C90%20sem%20fidelidade%20da%20Styllus."
-                >Quero o plano mensal <span aria-hidden="true">↗</span></a
-              >
-            </article>
+            </div>
           </div>
         </div>
       </section>
@@ -195,17 +127,17 @@
         <div class="container">
           <div class="section-heading split-heading">
             <div>
-              <p class="eyebrow">Veja por dentro</p>
-              <h2 id="structure-title">ESPAÇO PARA<br /><em>EVOLUIR.</em></h2>
+              <h2 id="structure-title">Espaço para evoluir.</h2>
             </div>
             <p>
-              Equipamentos Santana Fitness, ambiente climatizado e uma estrutura
-              pronta para o seu treino.
+              Conheça de perto os equipamentos e os ambientes que fazem parte
+              da sua rotina de treino.
             </p>
           </div>
           <div
             class="overview-gallery"
             data-overview-gallery
+            data-float-guard
             aria-label="Galeria de fotos da estrutura"
           >
             <div class="gallery-track">
@@ -217,10 +149,14 @@
                   /assets/overview/web/overview-01.webp      1600w,
                   /assets/overview/web/overview-01-2560.webp 2560w
                 "
-                sizes="(max-width: 760px) calc(100vw - 32px), 1100px"
-                data-full="/assets/overview/web/overview-01-2560.webp"
+                sizes="(max-width: 960px) min(720px, calc(100vw - 32px)), min(1180px, calc(100vw - 40px))"
+                data-photo="overview-01"
+                data-caption="Área de musculação"
+                width="4032"
+                height="2268"
                 alt="Vista da estrutura da Styllus Fitness Center"
                 aria-hidden="false"
+                loading="lazy"
                 decoding="async"
               /><img
                 src="/assets/overview/web/overview-02.webp"
@@ -229,8 +165,11 @@
                   /assets/overview/web/overview-02.webp      1600w,
                   /assets/overview/web/overview-02-2560.webp 2560w
                 "
-                sizes="(max-width: 760px) calc(100vw - 32px), 1100px"
-                data-full="/assets/overview/web/overview-02-2560.webp"
+                sizes="(max-width: 960px) min(720px, calc(100vw - 32px)), min(1180px, calc(100vw - 40px))"
+                data-photo="overview-02"
+                data-caption="Equipamentos Santana Fitness"
+                width="4032"
+                height="2268"
                 alt="Máquinas Santana Fitness na área de musculação da Styllus"
                 aria-hidden="true"
                 loading="lazy"
@@ -242,8 +181,11 @@
                   /assets/overview/web/overview-03.webp      1600w,
                   /assets/overview/web/overview-03-2560.webp 2560w
                 "
-                sizes="(max-width: 760px) calc(100vw - 32px), 1100px"
-                data-full="/assets/overview/web/overview-03-2560.webp"
+                sizes="(max-width: 960px) min(720px, calc(100vw - 32px)), min(1180px, calc(100vw - 40px))"
+                data-photo="overview-03"
+                data-caption="Halteres e bancos"
+                width="4032"
+                height="2268"
                 alt="Halteres, bancos e espelhos na área de treino da Styllus"
                 aria-hidden="true"
                 loading="lazy"
@@ -255,8 +197,11 @@
                   /assets/overview/web/overview-04.webp      1600w,
                   /assets/overview/web/overview-04-2560.webp 2560w
                 "
-                sizes="(max-width: 760px) calc(100vw - 32px), 1100px"
-                data-full="/assets/overview/web/overview-04-2560.webp"
+                sizes="(max-width: 960px) min(720px, calc(100vw - 32px)), min(1180px, calc(100vw - 40px))"
+                data-photo="overview-04"
+                data-caption="Sala de atividades"
+                width="4032"
+                height="2268"
                 alt="Sala ampla de atividades da Styllus Fitness Center"
                 aria-hidden="true"
                 loading="lazy"
@@ -268,18 +213,34 @@
                   /assets/overview/web/overview-05.webp      1600w,
                   /assets/overview/web/overview-05-2560.webp 2560w
                 "
-                sizes="(max-width: 760px) calc(100vw - 32px), 1100px"
-                data-full="/assets/overview/web/overview-05-2560.webp"
+                sizes="(max-width: 960px) min(720px, calc(100vw - 32px)), min(1180px, calc(100vw - 40px))"
+                data-photo="overview-05"
+                data-caption="Vista geral da estrutura"
+                width="4032"
+                height="2268"
                 alt="Vista panorâmica dos equipamentos e escadaria da Styllus"
                 aria-hidden="true"
                 loading="lazy"
                 decoding="async"
               />
             </div>
+            <button
+              class="gallery-open"
+              type="button"
+              aria-label="Ampliar foto da estrutura"
+              title="Ampliar foto"
+            >
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
+              </svg>
+            </button>
             <div class="gallery-overlay">
-              <p aria-hidden="true">
-                <span data-gallery-current>01</span> / 05
-              </p>
+              <div class="gallery-meta">
+                <p class="gallery-caption" data-gallery-caption>Área de musculação</p>
+                <p class="gallery-count" aria-hidden="true">
+                  <span data-gallery-current>01</span> / 05
+                </p>
+              </div>
               <span
                 class="sr-only"
                 data-gallery-announcement
@@ -287,59 +248,38 @@
                 aria-atomic="true"
                 >Foto 1 de 5: Vista da estrutura da Styllus Fitness Center</span
               >
-              <button
-                class="gallery-open"
-                type="button"
-                aria-label="Ampliar foto da estrutura"
-              >
-                Ampliar foto <span aria-hidden="true">↗</span>
-              </button>
               <div class="gallery-controls">
                 <button
                   type="button"
                   data-gallery-previous
                   aria-label="Foto anterior"
                 >
-                  ←</button
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H4m6-6-6 6 6 6" /></svg></button
                 ><button
                   type="button"
                   data-gallery-next
                   aria-label="Próxima foto"
                 >
-                  →
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6" /></svg>
                 </button>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section class="differences section" aria-labelledby="differences-title">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">O que importa no treino</p>
-            <h2 id="differences-title">SUPORTE QUE<br /><em>APARECE.</em></h2>
-          </div>
-          <div class="difference-list">
-            <article>
-              <span>01</span>
-              <h3>Academia climatizada</h3>
-              <p>Um ambiente preparado para você treinar com conforto.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Aula experimental</h3>
-              <p>Conheça a estrutura antes de escolher seu plano.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Equipamentos Santana Fitness</h3>
-              <p>Máquinas e aparelhos para uma rotina completa.</p>
-            </article>
-            <article>
-              <span>04</span>
-              <h3>Profissionais presentes</h3>
-              <p>Suporte de quem está no espaço e acompanha seu treino.</p>
-            </article>
+          <div class="differences" aria-label="Estrutura e suporte para o treino">
+            <div class="difference-list">
+              <article>
+                <h3>Academia climatizada</h3>
+                <p>Conforto para manter o foco no treino.</p>
+              </article>
+              <article>
+                <h3>Equipamentos Santana Fitness</h3>
+                <p>Máquinas, halteres e bancos para sua rotina.</p>
+              </article>
+              <article>
+                <h3>Profissionais presentes</h3>
+                <p>Uma equipe por perto para oferecer suporte.</p>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -350,10 +290,7 @@
       >
         <div class="container location-grid">
           <div>
-            <p class="eyebrow">Venha no seu horário</p>
-            <h2 id="location-title">
-              TREINO COM<br /><em>ENDEREÇO CERTO.</em>
-            </h2>
+            <h2 id="location-title">Encaixe o treino<br />na sua rotina.</h2>
             <div class="hours" aria-label="Horários de funcionamento">
               <div><span>Segunda a sexta</span><strong>06h — 23h</strong></div>
               <div><span>Sábado</span><strong>09h — 12h</strong></div>
@@ -369,7 +306,7 @@
                 href="https://www.google.com/maps/search/?api=1&amp;query=R.+Princesa+Isabel%2C+600%2C+Pte.+do+Imaruim%2C+Palho%C3%A7a+-+SC%2C+88130-635"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Abrir no Google Maps <span aria-hidden="true">↗</span></a
+                >Abrir no Google Maps <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a
               >
             </div>
           </div>
@@ -383,20 +320,42 @@
           </div>
         </div>
       </section>
-      <section class="final-cta" aria-labelledby="contact-title">
-        <div class="container final-cta-content">
-          <p class="eyebrow centered">Comece com uma conversa</p>
-          <h2 id="contact-title">
-            SEU PRÓXIMO<br /><em>TREINO COMEÇA AQUI.</em>
-          </h2>
-          <p>Agende sua aula experimental e conheça a estrutura da Styllus.</p>
-          <a
-            class="button button-primary button-large"
-            data-whatsapp
-            data-whatsapp-message="trial"
-            href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20na%20Styllus%20Fitness%20Center."
-            >Agendar aula experimental <span aria-hidden="true">↗</span></a
-          >
+      <section class="final-cta" id="planos" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="final-card">
+            <img
+              src="/assets/overview/web/overview-05.webp"
+              srcset="/assets/overview/web/overview-05-800.webp 800w, /assets/overview/web/overview-05.webp 1600w, /assets/overview/web/overview-05-2560.webp 2560w"
+              sizes="(max-width: 1240px) 100vw, 1180px"
+              width="4032"
+              height="2268"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="final-cta-content">
+              <h2 id="contact-title">Venha conhecer a Styllus.</h2>
+              <p>Agende uma aula experimental e veja a estrutura de perto.</p>
+              <div class="final-actions">
+                <a
+                  class="button button-primary button-large"
+                  data-whatsapp
+                  data-whatsapp-message="trial"
+                  href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20na%20Styllus%20Fitness%20Center."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Agendar aula experimental <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a>
+                <a
+                  class="text-link"
+                  data-whatsapp
+                  data-whatsapp-message="plans"
+                  href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20os%20planos%20e%20as%20condi%C3%A7%C3%B5es%20atuais%20da%20Styllus%20Fitness%20Center."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Consultar planos no WhatsApp <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -411,15 +370,14 @@
         aria-label="Foto anterior"
         data-gallery-previous
       >
-        ←</button
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H4m6-6-6 6 6 6" /></svg></button
       ><button
         class="gallery-lightbox-close"
         type="button"
         aria-label="Fechar foto ampliada"
       >
-        ×</button
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" /></svg></button
       ><img
-        src="/assets/overview/web/overview-01-2560.webp"
         alt="Foto ampliada da estrutura da Styllus Fitness Center"
       /><button
         class="gallery-lightbox-nav"
@@ -427,7 +385,7 @@
         aria-label="Próxima foto"
         data-gallery-next
       >
-        →
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6" /></svg>
       </button>
     </dialog>
     <footer class="site-footer">
@@ -449,7 +407,9 @@
             data-whatsapp
             data-whatsapp-message="general"
             href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20melhor%20a%20Styllus%20Fitness%20Center%2C%20seus%20planos%2C%20hor%C3%A1rios%20e%20estrutura."
-            >WhatsApp: (48) 99188-5129</a
+            target="_blank"
+            rel="noopener noreferrer"
+          >WhatsApp: (48) 99188-5129</a
           ><a href="mailto:contato@styllusfitness.com.br"
             >contato@styllusfitness.com.br</a
           >
@@ -457,16 +417,18 @@
       </div>
       <div class="container footer-bottom">
         <small>© 2026 Styllus Fitness Center.</small
-        ><a href="#inicio">Voltar ao topo ↑</a>
+        ><a href="#inicio">Voltar ao topo <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20V4m-6 6 6-6 6 6" /></svg></a>
       </div>
     </footer>
     <a
       class="whatsapp-float"
       data-whatsapp
       data-whatsapp-message="general"
-      href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20melhor%20a%20Styllus%20Fitness%20Center%2C%20seus%20planos%2C%20hor%C3%A1rios%20e%20estrutura."
       aria-label="Fale conosco pelo WhatsApp"
-      ><svg viewBox="0 0 32 32" aria-hidden="true">
+      href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20melhor%20a%20Styllus%20Fitness%20Center%2C%20seus%20planos%2C%20hor%C3%A1rios%20e%20estrutura."
+      target="_blank"
+      rel="noopener noreferrer"
+    ><svg viewBox="0 0 32 32" aria-hidden="true">
         <path
           d="M27.3 4.7A15.4 15.4 0 0 0 3.1 23.3L1 31l7.9-2.1A15.4 15.4 0 0 0 27.3 4.7Zm-11 23.4c-2.4 0-4.8-.7-6.8-1.9l-.5-.3-4.7 1.2 1.3-4.5-.3-.5a12.7 12.7 0 1 1 11 6Zm7-9.5c-.4-.2-2.3-1.1-2.7-1.2-.3-.1-.6-.2-.9.2-.2.4-1 1.2-1.2 1.5-.2.3-.4.3-.8.1-2.2-1.1-3.7-2-5.2-4.5-.4-.7.4-.7 1.1-2.2.1-.3.1-.6 0-.8l-1.2-3c-.3-.7-.7-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.5 4 1.7 4.3c.2.3 2.9 4.5 7.1 6.3 2.6 1.1 3.6 1.2 4.9 1 .8-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.3-.4-.4-.8-.6Z"
         /></svg

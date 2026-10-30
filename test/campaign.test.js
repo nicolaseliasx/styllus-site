@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile, stat } from "node:fs/promises";
+import { siteConfig, whatsappUrl } from "../src/config/site.js";
 
 const read = (file) => readFile(new URL(`../${file}`, import.meta.url), "utf8");
 
@@ -56,8 +57,6 @@ test("registra produto e comunica oferta, horários e diferenciais confirmados",
   const product = await read("PRODUCT.md");
   for (const value of [
     "Desde 2005",
-    "89,90",
-    "109,90",
     "06h",
     "23h",
     "09h",
@@ -74,7 +73,7 @@ test("registra produto e comunica oferta, horários e diferenciais confirmados",
     "promoção irresistível",
   ])
     assert.doesNotMatch(markup, new RegExp(forbidden, "i"));
-  assert.match(markup, /href="#planos"/);
+  assert.match(markup, /id="planos"/);
   assert.match(markup, /href="#estrutura"/);
   assert.match(markup, /href="#horarios"/);
   assert.match(markup, /href="#localizacao"/);
@@ -88,6 +87,44 @@ test("registra produto e comunica oferta, horários e diferenciais confirmados",
   );
 });
 
+test("publica consulta de planos sem preços ou condições comerciais antigas", async () => {
+  const sources = await Promise.all([
+    read("index.html"), read("links/index.html"), read("PRODUCT.md"),
+    read("src/config/site.js"),
+  ]);
+  for (const source of sources)
+    assert.doesNotMatch(source, /89,90|109,90|R\$|12x|sem fidelidade|compromisso de 12 meses|data-whatsapp-message="(?:annual|monthly)"/i);
+  for (const markup of sources.slice(0, 2))
+    assert.match(markup, /data-whatsapp-message="plans"/);
+  assert.equal(siteConfig.messages.plans,
+    "Olá! Gostaria de conhecer os planos e as condições atuais da Styllus Fitness Center.");
+  assert.equal(siteConfig.messages.annual, undefined);
+  assert.equal(siteConfig.messages.monthly, undefined);
+});
+
+test("URLs de WhatsApp preservam telefone, mensagem e fallback contextual", () => {
+  for (const key of ["trial", "plans", "general"]) {
+    const url = new URL(whatsappUrl(key));
+    assert.equal(url.origin + url.pathname, "https://api.whatsapp.com/send");
+    assert.equal(url.searchParams.get("phone"), "5548991885129");
+    assert.equal(url.searchParams.get("text"), siteConfig.messages[key]);
+  }
+  assert.equal(whatsappUrl("unknown"), whatsappUrl("general"));
+});
+
+test("ações usam ícones vetoriais decorativos em vez de setas tipográficas", async () => {
+  for (const file of ["index.html", "links/index.html"]) {
+    const markup = await read(file);
+    assert.equal(/[↗↘↖↙←→↑↓×]/u.test(markup), false, `${file} ainda contém símbolos tipográficos`);
+    const icons = markup.match(/<svg\b[^>]*class="icon"[^>]*>/g) || [];
+    assert.ok(icons.length >= 4, `${file} precisa dos ícones de ação`);
+    for (const icon of icons) {
+      assert.match(icon, /aria-hidden="true"/);
+      assert.match(icon, /focusable="false"/);
+    }
+  }
+});
+
 test("WhatsApp usa configuração contextual e nenhuma rota usa wa.me ou setInterval", async () => {
   const [markup, linksMarkup, main, links] = await Promise.all([
     read("index.html"),
@@ -96,8 +133,7 @@ test("WhatsApp usa configuração contextual e nenhuma rota usa wa.me ou setInte
     read("src/links.js"),
   ]);
   assert.match(markup, /data-whatsapp-message="trial"/);
-  assert.match(markup, /data-whatsapp-message="annual"/);
-  assert.match(markup, /data-whatsapp-message="monthly"/);
+  assert.match(markup, /data-whatsapp-message="plans"/);
   assert.doesNotMatch(`${markup}\n${main}\n${links}`, /wa\.me|setInterval/);
   assert.doesNotMatch(
     `${markup}\n${linksMarkup}`,
@@ -114,8 +150,15 @@ test("mantém contraste AA, safe areas e alvos mínimos nos componentes", async 
     read("src/styles/responsive.css"),
     read("src/links.css"),
   ]);
-  assert.ok(contrast("#f4f7fb", "#0066d6") >= 4.5);
-  assert.match(shared, /--blue-action:\s*#0066d6/);
+  assert.ok(contrast("#f5f7fa", "#0866cc") >= 4.5);
+  assert.ok(contrast("#15202b", "#ffffff") >= 4.5);
+  assert.ok(contrast("#56616a", "#ffffff") >= 4.5);
+  assert.ok(contrast("#0866cc", "#ffffff") >= 4.5);
+  assert.ok(contrast("#bdc5ce", "#08111b") >= 4.5);
+  assert.match(shared, /--blue-action:\s*#0866cc/);
+  assert.match(shared, /--paper:\s*#ffffff/);
+  assert.match(shared, /--ink:\s*#15202b/);
+  assert.match(shared, /--ink-muted:\s*#56616a/);
   assert.match(shared, /\.button-small\s*{[^}]*min-height:\s*44px/s);
   assert.match(components, /safe-area-inset-top/);
   assert.match(responsive, /visibility:\s*hidden/);
@@ -143,7 +186,7 @@ test("fotos usam variantes responsivas e há uma única galeria completa", async
   );
   assert.equal((markup.match(/data-overview-gallery/g) || []).length, 1);
   assert.equal(
-    (markup.match(/data-full="[^"]*overview-\d\d-2560\.webp/g) || []).length,
+    (markup.match(/data-photo="overview-\d\d"/g) || []).length,
     5,
   );
   assert.match(markup, /fetchpriority="high"/);
