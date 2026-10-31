@@ -3,7 +3,7 @@ import { siteConfig } from "../../src/config/site.js";
 
 for (const javaScriptEnabled of [true, false]) {
   test.describe(`contato com JavaScript ${javaScriptEnabled ? "ativo" : "desativado"}`, () => {
-    test.use({ javaScriptEnabled, reducedMotion: "reduce" });
+    test.use({ javaScriptEnabled, contextOptions: { reducedMotion: "reduce" } });
 
     for (const route of ["/", "/links/"]) {
       test(`${route} oferece consulta e aula com URLs completas`, async ({ page }) => {

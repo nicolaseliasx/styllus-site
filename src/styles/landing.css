@@ -115,7 +115,7 @@
 .gallery-track img {
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.45s var(--ease);
+  transition: opacity 0.9s ease-in-out;
 }
 .gallery-track img.is-active {
   opacity: 1;
@@ -175,6 +175,16 @@
   color: var(--white);
   background: rgba(8, 17, 27, 0.6);
   backdrop-filter: blur(6px);
+}
+.gallery-controls button[hidden] {
+  display: none;
+}
+.gallery-autoplay .icon-play,
+.gallery-autoplay.is-paused .icon-pause {
+  display: none;
+}
+.gallery-autoplay.is-paused .icon-play {
+  display: block;
 }
 .gallery-controls button:hover {
   background: var(--silver);

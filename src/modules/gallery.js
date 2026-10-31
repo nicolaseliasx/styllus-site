@@ -4,6 +4,9 @@ import full03 from "../../assets/overview/web/overview-03-2560.webp";
 import full04 from "../../assets/overview/web/overview-04-2560.webp";
 import full05 from "../../assets/overview/web/overview-05-2560.webp";
 
+// Autoplay advances while the gallery is on screen; any manual navigation stops it.
+const AUTOPLAY_INTERVAL = 5000;
+
 const fullPhotos = {
   "overview-01": full01,
   "overview-02": full02,
@@ -27,6 +30,7 @@ export function initGallery(root = document) {
   const dialogImage = dialog?.querySelector("img");
   const dialogPrev = dialog?.querySelector("[data-gallery-previous]");
   const dialogNext = dialog?.querySelector("[data-gallery-next]");
+  const autoplayToggle = gallery.querySelector("[data-gallery-autoplay]");
   let index = Math.max(
     0,
     photos.findIndex((photo) => photo.classList.contains("is-active")),
@@ -38,7 +42,7 @@ export function initGallery(root = document) {
     dialogImage.src = fullPhotos[photo.dataset.photo] || photo.currentSrc || photo.src;
     dialogImage.alt = photo.alt;
   };
-  const show = (nextIndex) => {
+  const show = (nextIndex, { announce = true } = {}) => {
     index = (nextIndex + photos.length) % photos.length;
     photos.forEach((photo, i) => {
       const active = i === index;
@@ -47,21 +51,27 @@ export function initGallery(root = document) {
     });
     if (caption) caption.textContent = photos[index].dataset.caption || photos[index].alt;
     if (current) current.textContent = String(index + 1).padStart(2, "0");
-    if (announcement)
+    if (announcement && announce)
       announcement.textContent = `Foto ${index + 1} de ${photos.length}: ${photos[index].alt}`;
     if (dialog?.open) updateDialog();
   };
-  previous?.addEventListener("click", () => show(index - 1));
-  next?.addEventListener("click", () => show(index + 1));
+  const autoplay = initAutoplay();
+  const navigate = (step) => {
+    autoplay.stop();
+    show(index + step);
+  };
+  previous?.addEventListener("click", () => navigate(-1));
+  next?.addEventListener("click", () => navigate(1));
   open?.addEventListener("click", () => {
     if (!dialog || !dialogImage) return;
     previousFocus = document.activeElement;
     updateDialog();
     dialog.showModal();
+    autoplay.schedule();
     dialog.querySelector(".gallery-lightbox-close")?.focus();
   });
-  dialogPrev?.addEventListener("click", () => show(index - 1));
-  dialogNext?.addEventListener("click", () => show(index + 1));
+  dialogPrev?.addEventListener("click", () => navigate(-1));
+  dialogNext?.addEventListener("click", () => navigate(1));
   dialog
     ?.querySelector(".gallery-lightbox-close")
     ?.addEventListener("click", () => dialog.close());
@@ -69,9 +79,66 @@ export function initGallery(root = document) {
     if (event.target === dialog) dialog.close();
   });
   dialog?.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") show(index - 1);
-    if (event.key === "ArrowRight") show(index + 1);
+    if (event.key === "ArrowLeft") navigate(-1);
+    if (event.key === "ArrowRight") navigate(1);
   });
-  dialog?.addEventListener("close", () => previousFocus?.focus());
+  dialog?.addEventListener("close", () => {
+    previousFocus?.focus();
+    autoplay.schedule();
+  });
   show(index);
+
+  function initAutoplay() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let paused = false;
+    let hovering = false;
+    let visible = false;
+    let timer = 0;
+    const enabled = Boolean(autoplayToggle) && !reduceMotion && photos.length > 1;
+    const canRun = () =>
+      enabled && !paused && !hovering && visible && !document.hidden && !dialog?.open;
+    const schedule = () => {
+      clearTimeout(timer);
+      timer = 0;
+      if (!canRun()) return;
+      timer = setTimeout(() => {
+        show(index + 1, { announce: false });
+        schedule();
+      }, AUTOPLAY_INTERVAL);
+    };
+    const setPaused = (value) => {
+      paused = value;
+      autoplayToggle?.classList.toggle("is-paused", paused);
+      autoplayToggle?.setAttribute(
+        "aria-label",
+        paused ? "Retomar troca de fotos" : "Pausar troca de fotos",
+      );
+      schedule();
+    };
+    if (!enabled) return { stop() {}, schedule() {} };
+    autoplayToggle.hidden = false;
+    autoplayToggle.addEventListener("click", () => setPaused(!paused));
+    gallery.addEventListener("mouseenter", () => {
+      hovering = true;
+      schedule();
+    });
+    gallery.addEventListener("mouseleave", () => {
+      hovering = false;
+      schedule();
+    });
+    document.addEventListener("visibilitychange", schedule);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        ([entry]) => {
+          visible = entry.isIntersecting;
+          schedule();
+        },
+        { threshold: 0.5 },
+      ).observe(gallery);
+    } else {
+      visible = true;
+      schedule();
+    }
+    return { stop: () => setPaused(true), schedule };
+  }
 }

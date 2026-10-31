@@ -51,8 +51,12 @@ card fotográfico (`overview-05`, raio 28px) com texto branco sobre degradê nav
 A galeria é um card fotográfico 16:9 (4:5 no celular) com raio de 28px (20px
 no celular). Legenda e contador ficam sobre a foto, à esquerda; as setas são
 círculos brancos à direita; a ampliação é discreta no canto superior direito. Há cinco fotos,
-sem autoplay, navegação manual, anúncio acessível e lightbox com teclado e
-retorno de foco. As URLs ampliadas são imports do Vite e só são carregadas ao
+navegação manual, anúncio acessível e lightbox com teclado e retorno de foco.
+As fotos trocam sozinhas a cada 5s com fade de 0,9s, só com a galeria visível
+(≥50% na tela), e seguram enquanto o mouse está sobre ela, o lightbox está aberto
+ou a aba está oculta. O botão de pausar/retomar fica antes das setas; qualquer
+navegação manual pausa a troca. A troca automática não atualiza o anúncio para
+leitor de tela e é desligada com `prefers-reduced-motion` (o botão some). As URLs ampliadas são imports do Vite e só são carregadas ao
 abrir o lightbox.
 
 Diferenciais e horários são cards `--soft` de raio 20px, sem rótulos técnicos.

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.use({ reducedMotion: "reduce" });
+test.use({ contextOptions: { reducedMotion: "reduce" } });
 
 for (const viewport of [
   { width: 360, height: 640 },

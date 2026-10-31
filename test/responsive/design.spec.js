@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.use({ reducedMotion: "reduce", viewport: { width: 390, height: 650 } });
+test.use({ contextOptions: { reducedMotion: "reduce" }, viewport: { width: 390, height: 650 } });
 
 // Read the cascade in the browser, including inherited colors and alpha.
 async function contrastOf(locator) {

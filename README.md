@@ -74,3 +74,8 @@ Nada vai direto para a `main`: push na `main` publica na hora.
    ```
 
 Commits saem com a identidade git global do devhub, sem coautor de agente.
+
+> Testes Playwright: emule movimento reduzido com
+> `test.use({ contextOptions: { reducedMotion: "reduce" } })` ou
+> `page.emulateMedia({ reducedMotion: "reduce" })`. A opção `reducedMotion`
+> direta no `test.use` é ignorada nesta versão do Playwright.

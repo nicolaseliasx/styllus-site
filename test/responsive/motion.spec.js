@@ -20,7 +20,7 @@ test("conteúdo permanece acessível após navegação", async ({ page }) => {
 });
 
 test.describe("movimento padrão", () => {
-  test.use({ reducedMotion: "no-preference" });
+  test.use({ contextOptions: { reducedMotion: "no-preference" } });
 
   test("hero e seção revelada terminam visíveis", async ({ page }) => {
     await page.setViewportSize({ width: 1366, height: 768 });

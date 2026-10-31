@@ -8,7 +8,7 @@ const builds = [
 export default defineConfig({
   testDir: "./test/production",
   reporter: "line",
-  use: { reducedMotion: "reduce", viewport: { width: 390, height: 844 } },
+  use: { contextOptions: { reducedMotion: "reduce" }, viewport: { width: 390, height: 844 } },
   projects: builds.map(({ name, base, port }) => ({
     name,
     use: { baseURL: `http://127.0.0.1:${port}${base}` },

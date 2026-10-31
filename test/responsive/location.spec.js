@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 const directions = /google\.com\/maps\/dir\/\?api=1&destination=R\.\+Princesa\+Isabel/;
 
-test.use({ reducedMotion: "reduce" });
+test.use({ contextOptions: { reducedMotion: "reduce" } });
 
 for (const viewport of [
   { width: 360, height: 640 },
