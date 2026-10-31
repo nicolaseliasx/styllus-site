@@ -197,6 +197,25 @@ test("fotos usam variantes responsivas e há uma única galeria completa", async
   assert.match(markup, /data-gallery-next/);
 });
 
+test("topo alterna só 03, 01 e 05, na maior resolução disponível", async () => {
+  const markup = await read("index.html");
+  const hero = markup.slice(
+    markup.indexOf("data-hero-slideshow"),
+    markup.indexOf("hero-content"),
+  );
+  const sources = [...hero.matchAll(/<img[^>]*?\ssrc="([^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(
+    sources.map((src) => src.match(/overview-0\d/)[0]),
+    ["overview-03", "overview-01", "overview-05"],
+  );
+  for (const n of ["01", "03", "05"]) {
+    await stat(new URL(`../assets/overview/web/overview-${n}-4032.webp`, import.meta.url));
+    assert.match(hero, new RegExp(`overview-${n}-4032\\.webp 4032w`));
+  }
+  // object-fit: cover em tela vertical usa só parte da largura da foto.
+  assert.match(hero, /sizes="max\(100vw, 178vh\)"/);
+});
+
 test("declara a academia como negócio local com endereço, contato e horários", async () => {
   const markup = await read("index.html");
   const match = markup.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
