@@ -4,17 +4,18 @@
   z-index: 100;
   height: calc(var(--header-height) + env(safe-area-inset-top));
   padding-top: env(safe-area-inset-top);
-  border-bottom: 1px solid transparent;
-  background: transparent;
+  --header-progress: 0;
+  border-bottom: 1px solid
+    rgba(245, 247, 250, calc(0.1 * var(--header-progress)));
+  background: rgba(8, 17, 27, calc(0.78 * var(--header-progress)));
+  -webkit-backdrop-filter: blur(calc(16px * var(--header-progress)))
+    saturate(calc(100% + 40% * var(--header-progress)));
+  backdrop-filter: blur(calc(16px * var(--header-progress)))
+    saturate(calc(100% + 40% * var(--header-progress)));
   transition:
-    background 0.25s,
-    border-color 0.25s;
-}
-.site-header.is-scrolled {
-  border-color: var(--line-light);
-  background: rgba(8, 17, 27, 0.78);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  backdrop-filter: blur(16px) saturate(140%);
+    background 0.18s linear,
+    border-color 0.18s linear,
+    backdrop-filter 0.18s linear;
 }
 body.menu-open .site-header {
   background: var(--navy);

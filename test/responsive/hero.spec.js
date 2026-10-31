@@ -39,7 +39,7 @@ test("cabeçalho é transparente sobre a foto e fica sólido ao rolar", async ({
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   const header = page.locator(".site-header");
-  await expect(header).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+  await expect(header).toHaveCSS("background-color", "rgba(8, 17, 27, 0)");
   await page.locator("#estrutura").scrollIntoViewIfNeeded();
   await expect(header).toHaveClass(/is-scrolled/);
   // Translúcido com desfoque, em vez de um bloco chapado.
@@ -58,3 +58,24 @@ for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 
     expect(logo.height).toBeGreaterThanOrEqual(44);
   });
 }
+
+test("cabeçalho ganha fundo e desfoque gradualmente nos primeiros pixels de rolagem", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const header = page.locator(".site-header");
+  const alpha = () =>
+    header.evaluate((element) => {
+      const channels = getComputedStyle(element).backgroundColor.match(/[\d.]+/g).map(Number);
+      return channels[3] ?? 1;
+    });
+  const scrollTo = async (top) => {
+    await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), top);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(top);
+  };
+  expect(await alpha()).toBe(0);
+  await scrollTo(60);
+  await expect.poll(alpha).toBeGreaterThan(0.3);
+  expect(await alpha()).toBeLessThan(0.5);
+  await scrollTo(400);
+  await expect.poll(alpha).toBeCloseTo(0.78, 2);
+});
