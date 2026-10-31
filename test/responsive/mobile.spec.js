@@ -10,6 +10,8 @@ for (const viewport of [
   }) => {
     await page.setViewportSize(viewport);
     await page.goto("/");
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator(".hero-copy")).toHaveCSS("opacity", "1");
     expect(
       await page.evaluate(
         () =>
@@ -18,8 +20,8 @@ for (const viewport of [
       ),
     ).toBe(true);
     await expect(page.locator("[data-hero-cta]")).toBeVisible();
-    const lockup = await page.locator(".hero-lockup").boundingBox();
-    expect(lockup.width).toBeGreaterThanOrEqual(120);
+    const lockup = await page.locator(".site-header .brand img").boundingBox();
+    expect(lockup.width).toBeGreaterThanOrEqual(72);
     const cta = await page.locator("[data-hero-cta]").boundingBox();
     expect(cta.height).toBeGreaterThanOrEqual(44);
     expect(cta.y + cta.height).toBeLessThanOrEqual(viewport.height);
@@ -32,6 +34,7 @@ for (const viewport of [
             return (
               style.display !== "none" &&
               style.visibility !== "hidden" &&
+              element.getClientRects().length > 0 &&
               Number(style.opacity) > 0.1
             );
           })
@@ -84,7 +87,7 @@ test("menu móvel controla foco e Escape", async ({ page }) => {
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });
 
-test("CTA flutuante aparece depois do hero e some sobre o mapa", async ({
+test("CTA flutuante aparece fora do hero, galeria e mapa", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -92,11 +95,13 @@ test("CTA flutuante aparece depois do hero e some sobre o mapa", async ({
   const floating = page.locator(".whatsapp-float");
   await expect(floating).not.toHaveClass(/is-visible/);
   await expect(floating).toHaveAttribute("inert", "");
-  await page.locator(".plans").scrollIntoViewIfNeeded();
+  await page.locator(".site-footer").evaluate((element) => element.scrollIntoView({ block: "end", behavior: "instant" }));
   await expect(floating).toHaveClass(/is-visible/);
   await expect(floating).not.toHaveAttribute("inert", "");
+  await page.locator(".overview-gallery").scrollIntoViewIfNeeded();
+  await expect(floating).not.toHaveClass(/is-visible/);
   await page.locator(".about-map").scrollIntoViewIfNeeded();
   await expect(floating).not.toHaveClass(/is-visible/);
-  await page.locator(".site-footer").scrollIntoViewIfNeeded();
+  await page.locator(".site-footer").evaluate((element) => element.scrollIntoView({ block: "end", behavior: "instant" }));
   await expect(floating).toHaveClass(/is-visible/);
 });

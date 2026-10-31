@@ -13,8 +13,8 @@ if (toggle && container && iframe) {
     if (!open && !iframe.getAttribute("src"))
       iframe.src = iframe.dataset.mapSrc;
     toggle
-      .querySelector("span")
-      ?.replaceChildren(document.createTextNode(open ? "+" : "×"));
+      .querySelector(".icon path")
+      ?.setAttribute("d", open ? "M12 5v14M5 12h14" : "M6 6l12 12M18 6 6 18");
     if (!open)
       container.scrollIntoView({
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches

@@ -11,8 +11,8 @@
 ## Fatos confirmados
 
 - A Styllus Fitness Center opera desde 2005.
-- Plano anual: 12x de R$ 89,90, com compromisso de 12 meses.
-- Plano mensal: R$ 109,90/mês, sem fidelidade.
+- Planos e condições atuais são consultados diretamente com a equipe no WhatsApp.
+- O site não publica preços, parcelamentos ou condições comerciais.
 - Horários: segunda a sexta, 06h–23h; sábado, 09h–12h.
 - A academia é climatizada.
 - Há aula experimental.
@@ -28,4 +28,10 @@ Não há dados confirmados sobre depoimentos, modalidades, taxas, formas de paga
 
 ## Direção
 
-A identidade navy/metálica/azul elétrico, os logos oficiais, Anton, Barlow e JetBrains Mono são autoridade visual. A evolução deve aumentar clareza e conversão sem rebrand, sem alterar logos ou fotos originais.
+A identidade navy/metálica/azul elétrico, os logos oficiais, Anton e Barlow são autoridade visual. A evolução deve aumentar clareza e conversão sem rebrand, sem alterar logos ou fotos originais.
+
+A home usa abertura fotográfica escura com foto real da estrutura, identificação
+única no cabeçalho e ação principal de aula experimental. As seções seguintes
+usam fundos claros e títulos Barlow para facilitar a leitura. O título Anton
+fica concentrado na abertura. A fotografia apresenta a estrutura real, sem
+retratos gerados ou serviços inventados.
