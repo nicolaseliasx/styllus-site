@@ -17,15 +17,15 @@ async function openHero(page, { reducedMotion = "no-preference" } = {}) {
 test("foto do topo troca sozinha a cada 2s com fade", async ({ page }) => {
   const { active } = await openHero(page);
   await expect(active).toHaveCount(1);
-  await expect(active).toHaveAttribute("src", /overview-03/);
+  await expect(active).toHaveAttribute("src", /overview-05/);
   const fade = await active.evaluate((image) => getComputedStyle(image).transitionDuration);
   expect(parseFloat(fade)).toBeGreaterThanOrEqual(0.6);
   await page.clock.runFor(INTERVAL + 50);
+  await expect(active).toHaveAttribute("src", /overview-03/);
+  await page.clock.runFor(INTERVAL);
   await expect(active).toHaveAttribute("src", /overview-01/);
   await page.clock.runFor(INTERVAL);
   await expect(active).toHaveAttribute("src", /overview-05/);
-  await page.clock.runFor(INTERVAL);
-  await expect(active).toHaveAttribute("src", /overview-03/);
 });
 
 test("fotos extras do topo não disputam prioridade com a primeira", async ({ page }) => {
@@ -42,11 +42,16 @@ test("para de trocar quando o topo sai da tela", async ({ page }) => {
   const { active } = await openHero(page);
   await page.locator("#estrutura").evaluate((element) => element.scrollIntoView({ behavior: "instant" }));
   await page.clock.runFor(INTERVAL * 3);
-  await expect(active).toHaveAttribute("src", /overview-03/);
+  await expect(active).toHaveAttribute("src", /overview-05/);
 });
 
-test("com movimento reduzido a foto do topo fica parada", async ({ page }) => {
+test("com movimento reduzido a foto do topo ainda troca a cada 2s, só com fade de opacidade", async ({ page }) => {
   const { active } = await openHero(page, { reducedMotion: "reduce" });
-  await page.clock.runFor(INTERVAL * 4);
+  await expect(active).toHaveAttribute("src", /overview-05/);
+  await page.clock.runFor(INTERVAL + 50);
   await expect(active).toHaveAttribute("src", /overview-03/);
+  await page.clock.runFor(INTERVAL);
+  await expect(active).toHaveAttribute("src", /overview-01/);
+  const fade = await active.evaluate((image) => getComputedStyle(image).transitionProperty);
+  expect(fade).toBe("opacity");
 });

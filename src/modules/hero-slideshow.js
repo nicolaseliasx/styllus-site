@@ -1,5 +1,6 @@
 // Cross-fades the hero photos while the hero is on screen. The first photo is
 // the LCP image; the others load with low priority and join once decoded.
+// Keeps running with reduced motion: it is only an opacity fade, no movement.
 const INTERVAL = 2000;
 
 export function initHeroSlideshow(root = document) {
@@ -7,7 +8,6 @@ export function initHeroSlideshow(root = document) {
   if (!frame) return;
   const photos = [...frame.querySelectorAll("img")];
   if (photos.length < 2) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   let index = Math.max(0, photos.findIndex((photo) => photo.classList.contains("is-active")));
   let visible = true;
   let timer = 0;
