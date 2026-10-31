@@ -24,7 +24,7 @@ test("foto do topo troca sozinha a cada 2s com fade", async ({ page }) => {
   await expect(active).toHaveAttribute("src", /overview-01/);
   await page.clock.runFor(INTERVAL);
   await expect(active).toHaveAttribute("src", /overview-05/);
-  await page.clock.runFor(INTERVAL * 2);
+  await page.clock.runFor(INTERVAL);
   await expect(active).toHaveAttribute("src", /overview-03/);
 });
 
@@ -32,7 +32,7 @@ test("fotos extras do topo não disputam prioridade com a primeira", async ({ pa
   await page.goto("/");
   const photos = page.locator(".hero-photo img");
   await expect(photos.first()).toHaveAttribute("fetchpriority", "high");
-  for (let i = 1; i < 4; i++) {
+  for (let i = 1; i < 3; i++) {
     await expect(photos.nth(i)).toHaveAttribute("fetchpriority", "low");
     await expect(photos.nth(i)).toHaveAttribute("aria-hidden", "true");
   }
