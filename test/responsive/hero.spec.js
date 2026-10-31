@@ -17,7 +17,7 @@ for (const viewport of [
     const photo = hero.locator(".hero-photo img.is-active");
     await expect(page.locator(".site-header .brand img")).toHaveAttribute("src", /styllus-lockup/);
     await expect(hero.locator(".hero-photo img")).toHaveCount(3);
-    await expect(photo).toHaveAttribute("src", /overview-03/);
+    await expect(photo).toHaveAttribute("src", /overview-05/);
     await photo.evaluate((image) => image.decode());
     const image = await photo.boundingBox();
     const box = await hero.boundingBox();

@@ -197,7 +197,7 @@ test("fotos usam variantes responsivas e há uma única galeria completa", async
   assert.match(markup, /data-gallery-next/);
 });
 
-test("topo alterna só 03, 01 e 05, na maior resolução disponível", async () => {
+test("topo alterna só 05 (principal), 03 e 01, na maior resolução disponível", async () => {
   const markup = await read("index.html");
   const hero = markup.slice(
     markup.indexOf("data-hero-slideshow"),
@@ -206,7 +206,7 @@ test("topo alterna só 03, 01 e 05, na maior resolução disponível", async () 
   const sources = [...hero.matchAll(/<img[^>]*?\ssrc="([^"]+)"/g)].map((m) => m[1]);
   assert.deepEqual(
     sources.map((src) => src.match(/overview-0\d/)[0]),
-    ["overview-03", "overview-01", "overview-05"],
+    ["overview-05", "overview-03", "overview-01"],
   );
   for (const n of ["01", "03", "05"]) {
     await stat(new URL(`../assets/overview/web/overview-${n}-4032.webp`, import.meta.url));
