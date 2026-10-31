@@ -88,23 +88,27 @@ test("menu móvel controla foco e Escape", async ({ page }) => {
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });
 
-test("Fale conosco aparece com a barra do topo e fica sempre visível ao rolar", async ({
+test("Fale conosco flutuante acompanha a barra do topo e fica sempre visível ao rolar", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  const cta = page.locator(".site-header .header-cta");
-  await expect(page.locator(".whatsapp-float")).toHaveCount(0);
+  const cta = page.locator(".whatsapp-float");
+  await expect(page.locator(".header-cta")).toHaveCount(0);
   await expect(cta).toBeHidden();
   await expect(cta).toHaveAttribute("href", /api\.whatsapp\.com\/send\?phone=5548991885129/);
   for (const target of [".about-map", ".overview-gallery", ".final-card", ".site-footer"]) {
     await page.locator(target).evaluate((element) => element.scrollIntoView({ block: "center", behavior: "instant" }));
+    await expect(page.locator(".site-header")).toHaveClass(/is-scrolled/);
     await expect(cta).toBeVisible();
     await expect(cta).toHaveText(/Fale conosco/);
     const box = await cta.boundingBox();
-    expect(box.height).toBeGreaterThanOrEqual(44);
     expect(box.x + box.width).toBeLessThanOrEqual(390);
+    expect(box.y + box.height).toBeLessThanOrEqual(844);
+    expect(box.x + box.width).toBeGreaterThan(390 - 24);
+    expect(box.y + box.height).toBeGreaterThan(844 - 40);
   }
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await expect(page.locator(".site-header")).not.toHaveClass(/is-scrolled/);
   await expect(cta).toBeHidden();
 });

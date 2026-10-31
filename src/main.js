@@ -11,6 +11,7 @@ initMotion();
 
 // The header fades in over the first pixels of scroll instead of switching at once.
 const header = document.querySelector("[data-header]");
+const whatsappFloat = document.querySelector(".whatsapp-float");
 const HEADER_FADE_DISTANCE = 120;
 let headerFrame = 0;
 const updateHeader = () => {
@@ -18,7 +19,11 @@ const updateHeader = () => {
   if (!header) return;
   const progress = Math.min(Math.max(window.scrollY / HEADER_FADE_DISTANCE, 0), 1);
   header.style.setProperty("--header-progress", progress.toFixed(3));
-  header.classList.toggle("is-scrolled", progress === 1);
+  const scrolled = progress === 1;
+  header.classList.toggle("is-scrolled", scrolled);
+  // The floating CTA follows the solid header: it shows and hides together with it.
+  whatsappFloat?.classList.toggle("is-visible", scrolled);
+  whatsappFloat?.toggleAttribute("inert", !scrolled);
 };
 updateHeader();
 window.addEventListener(

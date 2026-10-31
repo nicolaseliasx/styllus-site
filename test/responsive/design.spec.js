@@ -26,10 +26,10 @@ async function contrastOf(locator) {
   });
 }
 
-test("Fale conosco da barra do topo tem contraste legível", async ({ page }) => {
+test("WhatsApp flutuante tem contraste legível", async ({ page }) => {
   await page.goto("/");
   await page.locator(".site-footer").evaluate((element) => element.scrollIntoView({ block: "end", behavior: "instant" }));
-  const cta = page.locator(".header-cta");
+  const cta = page.locator(".whatsapp-float");
   await expect(cta).toBeVisible();
   expect(await contrastOf(cta)).toBeGreaterThanOrEqual(4.5);
 });

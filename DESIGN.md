@@ -62,10 +62,10 @@ preços ou condições comerciais publicadas. Horários, endereço e mapa perman
 
 As setas e controles usam SVGs decorativos de 20px, traço de 1,5px e pontas
 arredondadas, ocultos de leitores de tela. Os nomes acessíveis ficam nos botões.
-Não há botão flutuante. No celular e tablet, um “Fale conosco” (WhatsApp, texto
-branco sobre `--blue-action`, 46px) aparece na barra do topo assim que ela fica
-sólida ao rolar e permanece visível; no topo da página o CTA do hero cumpre esse
-papel. No desktop, o botão “Falar no WhatsApp” já está no menu.
+O WhatsApp flutuante (“Fale conosco”, texto branco sobre `--blue-action`, canto
+inferior direito) acompanha a barra do topo: aparece quando a barra fica sólida ao
+rolar, permanece em toda a página e some quando a barra some (topo da página, onde o
+CTA do hero cumpre esse papel).
 
 ## Rotas, movimento e verificação
 
