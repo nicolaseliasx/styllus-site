@@ -62,8 +62,10 @@ preços ou condições comerciais publicadas. Horários, endereço e mapa perman
 
 As setas e controles usam SVGs decorativos de 20px, traço de 1,5px e pontas
 arredondadas, ocultos de leitores de tela. Os nomes acessíveis ficam nos botões.
-O WhatsApp flutuante (texto branco sobre `--blue-action`, contraste ≥4.5 medido no navegador) fica oculto enquanto o CTA inicial, a galeria ou o mapa
-estão visíveis, protegendo os controles dessas áreas.
+Não há botão flutuante. No celular e tablet, um “Fale conosco” (WhatsApp, texto
+branco sobre `--blue-action`, 46px) aparece na barra do topo assim que ela fica
+sólida ao rolar e permanece visível; no topo da página o CTA do hero cumpre esse
+papel. No desktop, o botão “Falar no WhatsApp” já está no menu.
 
 ## Rotas, movimento e verificação
 
@@ -79,5 +81,5 @@ cobre primeira tela a partir de 360×640, altura móvel reduzida de 390×650, to
 menu, galeria, movimento e contato com/sem JavaScript. `npm run test:production`
 valida as duas rotas e as cinco fotos ampliadas na raiz e em `/styllus/`.
 
-A entrega para revisão ocorre somente em `styllus-homologacao.ncls.cc`, usando
-uma cópia do build separada do diretório de trabalho. Produção aguarda aprovação.
+Toda mudança passa por homologação antes da produção; o passo a passo está no
+[README](README.md#fluxo-de-mudança-homologação--produção).
