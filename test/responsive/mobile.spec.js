@@ -88,21 +88,23 @@ test("menu móvel controla foco e Escape", async ({ page }) => {
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });
 
-test("CTA flutuante aparece fora do hero, galeria e mapa", async ({
+test("Fale conosco aparece com a barra do topo e fica sempre visível ao rolar", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  const floating = page.locator(".whatsapp-float");
-  await expect(floating).not.toHaveClass(/is-visible/);
-  await expect(floating).toHaveAttribute("inert", "");
-  await page.locator(".site-footer").evaluate((element) => element.scrollIntoView({ block: "end", behavior: "instant" }));
-  await expect(floating).toHaveClass(/is-visible/);
-  await expect(floating).not.toHaveAttribute("inert", "");
-  await page.locator(".overview-gallery").scrollIntoViewIfNeeded();
-  await expect(floating).not.toHaveClass(/is-visible/);
-  await page.locator(".about-map").scrollIntoViewIfNeeded();
-  await expect(floating).not.toHaveClass(/is-visible/);
-  await page.locator(".site-footer").evaluate((element) => element.scrollIntoView({ block: "end", behavior: "instant" }));
-  await expect(floating).toHaveClass(/is-visible/);
+  const cta = page.locator(".site-header .header-cta");
+  await expect(page.locator(".whatsapp-float")).toHaveCount(0);
+  await expect(cta).toBeHidden();
+  await expect(cta).toHaveAttribute("href", /api\.whatsapp\.com\/send\?phone=5548991885129/);
+  for (const target of [".about-map", ".overview-gallery", ".final-card", ".site-footer"]) {
+    await page.locator(target).evaluate((element) => element.scrollIntoView({ block: "center", behavior: "instant" }));
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveText(/Fale conosco/);
+    const box = await cta.boundingBox();
+    expect(box.height).toBeGreaterThanOrEqual(44);
+    expect(box.x + box.width).toBeLessThanOrEqual(390);
+  }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await expect(cta).toBeHidden();
 });

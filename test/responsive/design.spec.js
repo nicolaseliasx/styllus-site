@@ -26,12 +26,12 @@ async function contrastOf(locator) {
   });
 }
 
-test("WhatsApp flutuante tem contraste legível após herdar o tema da home", async ({ page }) => {
+test("Fale conosco da barra do topo tem contraste legível", async ({ page }) => {
   await page.goto("/");
   await page.locator(".site-footer").evaluate((element) => element.scrollIntoView({ block: "end", behavior: "instant" }));
-  const floating = page.locator(".whatsapp-float");
-  await expect(floating).toHaveClass(/is-visible/);
-  expect(await contrastOf(floating)).toBeGreaterThanOrEqual(4.5);
+  const cta = page.locator(".header-cta");
+  await expect(cta).toBeVisible();
+  expect(await contrastOf(cta)).toBeGreaterThanOrEqual(4.5);
 });
 
 test("título e descrição da estrutura têm um único intervalo no celular", async ({ page }) => {
