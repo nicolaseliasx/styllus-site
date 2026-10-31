@@ -14,9 +14,9 @@ for (const viewport of [
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     const hero = page.locator(".hero");
-    const photo = hero.locator(".hero-photo img");
+    const photo = hero.locator(".hero-photo img.is-active");
     await expect(page.locator(".site-header .brand img")).toHaveAttribute("src", /styllus-lockup/);
-    await expect(hero.locator("img")).toHaveCount(1);
+    await expect(hero.locator(".hero-photo img")).toHaveCount(4);
     await expect(photo).toHaveAttribute("src", /overview-03/);
     await photo.evaluate((image) => image.decode());
     const image = await photo.boundingBox();

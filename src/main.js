@@ -2,11 +2,13 @@ import "./styles.css";
 import { initWhatsApp } from "./modules/whatsapp.js";
 import { initMenu } from "./modules/menu.js";
 import { initGallery } from "./modules/gallery.js";
+import { initHeroSlideshow } from "./modules/hero-slideshow.js";
 import { initMotion } from "./modules/motion.js";
 
 initWhatsApp();
 initMenu();
 initGallery();
+initHeroSlideshow();
 initMotion();
 
 // The header fades in over the first pixels of scroll instead of switching at once.

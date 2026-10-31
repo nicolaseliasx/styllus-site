@@ -28,6 +28,11 @@ Todos os assets publicados são da própria Styllus.
 Referência: home mobile da Smart Fit. A foto `overview-03` cobre todo o hero
 (`100svh`, entre 600 e 1000px) em todas as larguras, inclusive atrás do
 cabeçalho, com degradês navy no topo, na base e à esquerda para legibilidade.
+As fotos do hero (`overview-03`, `01`, `05`, `02`) trocam sozinhas a cada 2s
+com fade de 0,8s enquanto o hero está na tela. A primeira é a imagem LCP
+(`fetchpriority="high"`); as demais têm `fetchpriority="low"`, `alt=""` e
+`aria-hidden`, e só entram depois de carregadas. Com `prefers-reduced-motion`
+a foto fica parada.
 O texto fica no canto inferior esquerdo: eyebrow “Academia desde 2005”, H1 Anton “Sua academia em Palhoça.” com “Palhoça.” em `--blue-light`,
 apoio e um único CTA “Agendar aula experimental”.
 
