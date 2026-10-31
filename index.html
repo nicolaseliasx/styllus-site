@@ -34,6 +34,48 @@
       imagesrcset="/assets/overview/web/overview-03-800.webp 800w, /assets/overview/web/overview-03.webp 1600w, /assets/overview/web/overview-03-2560.webp 2560w"
       imagesizes="100vw"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ExerciseGym",
+        "name": "Styllus Fitness Center",
+        "url": "https://styllusfitness.com.br/",
+        "telephone": "+55 48 99188-5129",
+        "email": "contato@styllusfitness.com.br",
+        "foundingDate": "2005",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "R. Princesa Isabel, 600 — Pte. do Imaruim",
+          "addressLocality": "Palhoça",
+          "addressRegion": "SC",
+          "postalCode": "88130-635",
+          "addressCountry": "BR"
+        },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=R.+Princesa+Isabel%2C+600%2C+Pte.+do+Imaruim%2C+Palho%C3%A7a+-+SC%2C+88130-635",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "06:00",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Saturday"
+            ],
+            "opens": "09:00",
+            "closes": "12:00"
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="home-page">
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -65,14 +107,9 @@
           aria-label="Navegação principal"
           data-nav
         >
-          <a
-            data-whatsapp
-            data-whatsapp-message="plans"
-            href="https://api.whatsapp.com/send?phone=5548991885129&amp;text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20os%20planos%20e%20as%20condi%C3%A7%C3%B5es%20atuais%20da%20Styllus%20Fitness%20Center."
-            target="_blank"
-            rel="noopener noreferrer"
-          >Consultar planos</a><a href="#estrutura">Estrutura</a
-          ><a href="#horarios">Horários</a><a href="#localizacao">Localização</a
+          <a href="#localizacao">Localização</a
+          ><a href="#horarios">Horários</a
+          ><a href="#estrutura">Estrutura</a
           ><a
             class="button button-primary button-small"
             data-whatsapp
@@ -101,7 +138,7 @@
         </div>
         <div class="container hero-content">
           <div class="hero-copy">
-            <p class="hero-eyebrow">Desde 2005 na Ponte do Imaruim</p>
+            <p class="hero-eyebrow">Academia desde 2005</p>
             <h1 id="hero-title">Sua academia<br />em <em>Palhoça.</em></h1>
             <p class="hero-lead">Estrutura e profissionais presentes para o seu treino.</p>
             <div class="hero-actions">
@@ -116,6 +153,50 @@
               >Agendar aula experimental <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a
               >
             </div>
+            <a
+              class="hero-location"
+              data-hero-location
+              href="https://www.google.com/maps/dir/?api=1&amp;destination=R.+Princesa+Isabel%2C+600%2C+Pte.+do+Imaruim%2C+Palho%C3%A7a+-+SC%2C+88130-635"
+              target="_blank"
+              rel="noopener noreferrer"
+            ><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21Z" /><circle cx="12" cy="9.5" r="2.5" /></svg><span>R. Princesa Isabel, 600 · Ponte do Imaruim</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section
+        class="location section"
+        id="localizacao"
+        aria-labelledby="location-title"
+      >
+        <div class="container location-grid">
+          <div>
+            <h2 id="location-title">Onde e quando treinar.</h2>
+            <div class="address-block">
+              <address>
+                R. Princesa Isabel, 600 — Pte. do Imaruim,<br />Palhoça — SC,
+                88130-635
+              </address>
+              <a
+                class="button button-ghost"
+                href="https://www.google.com/maps/dir/?api=1&amp;destination=R.+Princesa+Isabel%2C+600%2C+Pte.+do+Imaruim%2C+Palho%C3%A7a+-+SC%2C+88130-635"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21Z" /><circle cx="12" cy="9.5" r="2.5" /></svg> Como chegar</a
+              >
+            </div>
+            <div class="hours" id="horarios" aria-label="Horários de funcionamento">
+              <div><span>Segunda a sexta</span><strong>06h — 23h</strong></div>
+              <div><span>Sábado</span><strong>09h — 12h</strong></div>
+            </div>
+          </div>
+          <div class="about-map" data-float-guard>
+            <iframe
+              src="https://www.google.com/maps?q=R.+Princesa+Isabel%2C+600%2C+Pte.+do+Imaruim%2C+Palho%C3%A7a+-+SC%2C+88130-635&amp;output=embed"
+              title="Mapa da Styllus Fitness Center em R. Princesa Isabel, 600, Palhoça, SC"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -283,43 +364,6 @@
           </div>
         </div>
       </section>
-      <section
-        class="location section"
-        id="horarios"
-        aria-labelledby="location-title"
-      >
-        <div class="container location-grid">
-          <div>
-            <h2 id="location-title">Encaixe o treino<br />na sua rotina.</h2>
-            <div class="hours" aria-label="Horários de funcionamento">
-              <div><span>Segunda a sexta</span><strong>06h — 23h</strong></div>
-              <div><span>Sábado</span><strong>09h — 12h</strong></div>
-            </div>
-            <div class="address-block" id="localizacao">
-              <p class="label">Onde estamos</p>
-              <address>
-                R. Princesa Isabel, 600 — Pte. do Imaruim,<br />Palhoça — SC,
-                88130-635
-              </address>
-              <a
-                class="text-link"
-                href="https://www.google.com/maps/search/?api=1&amp;query=R.+Princesa+Isabel%2C+600%2C+Pte.+do+Imaruim%2C+Palho%C3%A7a+-+SC%2C+88130-635"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Abrir no Google Maps <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a
-              >
-            </div>
-          </div>
-          <div class="about-map" data-float-guard>
-            <iframe
-              src="https://www.google.com/maps?q=R.+Princesa+Isabel%2C+600%2C+Pte.+do+Imaruim%2C+Palho%C3%A7a+-+SC%2C+88130-635&amp;output=embed"
-              title="Mapa da Styllus Fitness Center em R. Princesa Isabel, 600, Palhoça, SC"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </div>
-      </section>
       <section class="final-cta" id="planos" aria-labelledby="contact-title">
         <div class="container">
           <div class="final-card">
@@ -402,6 +446,7 @@
             alt="Emblema da Styllus Fitness Center"
         /></a>
         <p>Força <i></i> Saúde <i></i> Disciplina <i></i> Resultados</p>
+        <address class="footer-address">R. Princesa Isabel, 600 — Pte. do Imaruim, Palhoça — SC</address>
         <div class="footer-contacts">
           <a
             data-whatsapp

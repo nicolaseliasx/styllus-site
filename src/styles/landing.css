@@ -1,10 +1,6 @@
 .home-page {
   background: var(--paper);
   color: var(--ink);
-  color-scheme: light;
-}
-.home-page .section :focus-visible {
-  outline-color: var(--blue-action);
 }
 .hero {
   position: relative;
@@ -34,7 +30,7 @@
   inset: 0;
   background:
     linear-gradient(180deg, rgba(8, 17, 27, 0.7), rgba(8, 17, 27, 0) 24%),
-    linear-gradient(0deg, rgba(8, 17, 27, 0.9), rgba(8, 17, 27, 0) 62%),
+    linear-gradient(0deg, var(--navy), rgba(8, 17, 27, 0) 62%),
     linear-gradient(90deg, rgba(8, 17, 27, 0.75), rgba(8, 17, 27, 0) 65%);
 }
 .hero-content {
@@ -69,6 +65,24 @@
 .hero-actions {
   display: flex;
   margin-top: 32px;
+}
+.hero-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 12px;
+  color: var(--silver);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+.hero-location .icon {
+  color: var(--blue-light);
+}
+.hero-location:hover {
+  color: var(--white);
+  text-decoration: underline;
 }
 .structure {
   padding-bottom: clamp(48px, 5vw, 72px);
@@ -178,6 +192,7 @@
 }
 .difference-list article {
   padding: 28px;
+  border: 1px solid var(--line-light);
   border-radius: var(--radius);
   background: var(--soft);
 }
@@ -194,7 +209,7 @@
   line-height: 1.55;
 }
 .location {
-  padding-top: clamp(32px, 4vw, 56px);
+  padding-bottom: 0;
   background: var(--paper);
 }
 .location-grid {
@@ -207,13 +222,14 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin: 32px 0;
+  margin-top: 32px;
 }
 .hours div {
   display: flex;
   flex-direction: column;
   gap: 6px;
   padding: 20px 24px;
+  border: 1px solid var(--line-light);
   border-radius: var(--radius);
   background: var(--soft);
 }
@@ -225,25 +241,22 @@
   font: 700 clamp(1.5rem, 2.2vw, 2rem) var(--font-body);
   letter-spacing: -0.02em;
 }
-.address-block .label {
-  margin: 0 0 8px;
-  color: var(--ink);
-  font: 700 1rem var(--font-body);
+.address-block {
+  margin-top: 20px;
 }
 .address-block address {
+  margin-bottom: 20px;
   font-style: normal;
   color: var(--ink-muted);
+  font-size: 1.1rem;
   line-height: 1.6;
-}
-.address-block .text-link {
-  color: var(--blue-action);
 }
 .about-map {
   aspect-ratio: 1.1;
   overflow: hidden;
   border-radius: var(--radius-lg);
+  border: 1px solid var(--line-light);
   background: var(--soft);
-  color-scheme: light;
 }
 .about-map iframe {
   width: 100%;
@@ -256,6 +269,7 @@
 }
 .final-card {
   position: relative;
+  border: 1px solid var(--line-light);
   isolation: isolate;
   min-height: clamp(440px, 42vw, 560px);
   display: flex;
